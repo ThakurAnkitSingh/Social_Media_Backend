@@ -10,6 +10,7 @@ router.get('/:userId', authMiddleware, async (req, res) => {
     if (!user) return res.status(404).json({ message: 'User not found' });
 
     const friendPosts = await Post.find({ userId: { $in: user?.friends } });
+    console.log(friendPosts, "ABout Friend Posts");
     const commentedPosts = await Post.find({ "comments.userId": { $in: user?.friends } });
 
     const feed = [...friendPosts, ...commentedPosts].sort((a, b) => b.createdAt - a.createdAt);

@@ -6,13 +6,15 @@ const router = express.Router();
 
 router.get('/:userId', authMiddleware, async (req, res) => {
   try {
-    const user = await User.findById(req.params.userId);
+    const user = await User.findById(req?.params?.userId);
     if (!user) return res.status(404).json({ message: 'User not found' });
 
-    const friendPosts = await Post.find({ userId: { $in: user.friends } });
-    const commentedPosts = await Post.find({ "comments.userId": { $in: user.friends } });
+    const friendPosts = await Post.find({ userId: { $in: user?.friends } });
+    const commentedPosts = await Post.find({ "comments.userId": { $in: user?.friends } });
 
     const feed = [...friendPosts, ...commentedPosts].sort((a, b) => b.createdAt - a.createdAt);
+
+    console.log(feed, "All about feed details");
 
     res.json(feed);
   } catch (err) {

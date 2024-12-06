@@ -5,8 +5,8 @@ const router = express.Router();
 
 // Send Friend Request
 router.post('/request', authMiddleware, async (req, res) => {
-  const { toUserId } = req.body;
-  const fromUserId = req.user.id;
+  const { toUserId } = req?.body;
+  const fromUserId = req?.user?.id;
 
   try {
     const toUser = await User.findById(toUserId);

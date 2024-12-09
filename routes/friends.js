@@ -22,9 +22,9 @@ router.post('/request', authMiddleware, async (req, res) => {
       await fromUser.save();
     }
 
-    res.json({ message: 'Friend request sent' });
+    // res.json({ message: 'Friend request sent' });
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    // res.status(500).json({ message: err.message });
   }
 });
 

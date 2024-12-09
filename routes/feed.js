@@ -14,11 +14,11 @@ router.get('/:userId', authMiddleware, async (req, res) => {
 
     const feed = [...friendPosts, ...commentedPosts].sort((a, b) => b.createdAt - a.createdAt);
 
-    console.log(feed, "All about feed details");
+    // console.log(feed, "All about feed details");
 
-    res.json(feed);
+    // res.json(feed);
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    // res.status(500).json({ message: err.message });
   }
 });
 

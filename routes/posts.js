@@ -9,9 +9,9 @@ router.post('/', authMiddleware, async (req, res) => {
   try {
     const post = new Post({ userId: req.user.id, content });
     await post.save();
-    res.json({ message: 'Post created successfully' });
+    // res.json({ message: 'Post created successfully' });
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    // res.status(500).json({ message: err.message });
   }
 });
 

@@ -12,7 +12,7 @@ router.post('/request', authMiddleware, async (req, res) => {
     const toUser = await User.findById(toUserId);
     const fromUser = await User.findById(fromUserId);
 
-    if (!toUser || !fromUser) return res.status(404).json({ message: 'User not found' });
+    // if (!toUser || !fromUser) return res.status(404).json({ message: 'User not found' });
 
     if (!toUser.friendRequests.received.includes(fromUserId)) {
       toUser.friendRequests.received.push(fromUserId);
@@ -24,7 +24,7 @@ router.post('/request', authMiddleware, async (req, res) => {
 
     res.json({ message: 'Friend request sent' });
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    // res.status(500).json({ message: err.message });
   }
 });
 
